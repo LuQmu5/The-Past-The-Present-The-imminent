@@ -12,8 +12,9 @@ public class Enemy : MonoBehaviour, IHealth
     private Transform _followTarget;
 
     [field: SerializeField] public float MaxHealth { get; set; }
-
     public float CurrentHealth { get; set; }
+
+    public static event Action Died;
 
     public void Init(Vector3 position, Transform player)
     {
@@ -34,7 +35,10 @@ public class Enemy : MonoBehaviour, IHealth
         CurrentHealth -= amount;
 
         if (CurrentHealth <= 0)
+        {
             gameObject.SetActive(false);
+            Died?.Invoke();
+        }
     }
 }
 
