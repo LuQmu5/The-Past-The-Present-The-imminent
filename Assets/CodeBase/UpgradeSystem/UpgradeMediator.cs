@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -33,6 +34,7 @@ public class UpgradeMediator : IDisposable
 
     private void OnUpgradeGoalReached()
     {
-        _upgradesMenuDisplay.Show();
+        IEnumerable randomUpgrades = _upgradeManager.GetRandomUpgrades();
+        _upgradesMenuDisplay.Show(randomUpgrades);
     }
 }

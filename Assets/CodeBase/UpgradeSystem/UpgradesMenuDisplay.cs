@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,15 +8,14 @@ public class UpgradesMenuDisplay : MonoBehaviour
     [SerializeField] private Image _panel;
     [SerializeField] private Transform _container;
     [SerializeField] private UpgradeDisplay _upgradeDisplayPrefab;
-    [SerializeField] private UpgradeData[] _data;
 
     public event Action<UpgradeData> UpgradeChosen;
 
-    public void Show()
+    public void Show(IEnumerable upgrades)
     {
         _panel.gameObject.SetActive(true);
 
-        foreach (UpgradeData data in _data)
+        foreach (UpgradeData data in upgrades)
         {
             UpgradeDisplay upgrade = Instantiate(_upgradeDisplayPrefab, _container);
             upgrade.Init(data);
