@@ -1,18 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class CharacterCombat : MonoBehaviour
 {
-    public bool IsFiring { get; private set; }
+    [SerializeField] private Weapon _weapon;
 
-    private void Update()
+    public void TryShoot()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            IsFiring = true;
-        }
-        else
-        {
-            IsFiring = false;
-        }
+        if (_weapon.IsCooling)
+            return;
+
+        _weapon.Shoot();
     }
 }

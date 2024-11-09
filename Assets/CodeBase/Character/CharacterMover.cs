@@ -6,19 +6,17 @@ public class CharacterMover : MonoBehaviour
 {
     [SerializeField] private CharacterController _controller;
     [SerializeField] private float _movementSpeed;
-
-    public bool IsRunning { get; private set; }
+    [SerializeField] private float _offsetRotationY = 15;
 
     private void Update()
     {
-        IsRunning = _controller.velocity.x != 0 || _controller.velocity.z != 0;
-
         RotateToMouse();
     }
 
     public void Move(Vector3 inputVector, bool isFiring)
     {
         Vector3 movementVector = Vector3.zero;
+        float speedReduceCoeff = 1.5f;
 
         if (inputVector.sqrMagnitude > 0.1f)
         {
@@ -28,11 +26,12 @@ public class CharacterMover : MonoBehaviour
 
             if (isFiring == false)
             {
+                speedReduceCoeff = 1;
                 transform.forward = movementVector;
             }
         }
 
-        _controller.Move(_movementSpeed * movementVector * Time.deltaTime);
+        _controller.Move((_movementSpeed / speedReduceCoeff) * movementVector * Time.deltaTime);
     }
 
     private void RotateToMouse()

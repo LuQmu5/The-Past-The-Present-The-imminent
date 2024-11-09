@@ -9,11 +9,15 @@ public class CharacterControl : MonoBehaviour
     private void Update()
     {
         Vector3 inputVector = GetInputAxis();
-        _mover.Move(inputVector, _combat.IsFiring);
+        bool isFiringKeyPressing = Input.GetKey(KeyCode.Mouse0);
 
-        // _animator.SetRunningParameter(_mover.IsRunning);
-        _animator.SetRunningParameter(inputVector.sqrMagnitude > 0.1f);
-        _animator.SetFiringParameter(_combat.IsFiring);
+        if (isFiringKeyPressing)
+            _combat.TryShoot();
+
+        _mover.Move(inputVector, isFiringKeyPressing);
+
+        _animator.SetRunningParameter(inputVector.sqrMagnitude > 0);
+        _animator.SetFiringParameter(isFiringKeyPressing);
     }
 
     private Vector3 GetInputAxis()
