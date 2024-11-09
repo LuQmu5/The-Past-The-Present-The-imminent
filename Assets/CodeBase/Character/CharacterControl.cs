@@ -8,11 +8,12 @@ public class CharacterControl : MonoBehaviour
 
     private void Update()
     {
-        _animator.SetFiringParameter(_combat.IsFiring);
-        _animator.SetRunningParameter(_mover.IsRunning);
-
         Vector3 inputVector = GetInputAxis();
         _mover.Move(inputVector, _combat.IsFiring);
+
+        // _animator.SetRunningParameter(_mover.IsRunning);
+        _animator.SetRunningParameter(inputVector.sqrMagnitude > 0.1f);
+        _animator.SetFiringParameter(_combat.IsFiring);
     }
 
     private Vector3 GetInputAxis()

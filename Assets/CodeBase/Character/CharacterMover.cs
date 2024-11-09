@@ -28,8 +28,7 @@ public class CharacterMover : MonoBehaviour
 
             if (isFiring == false)
             {
-                float lookSpeed = 100;
-                transform.forward = Vector3.Slerp(transform.forward, movementVector, Time.deltaTime * lookSpeed);
+                transform.forward = movementVector;
             }
         }
 
