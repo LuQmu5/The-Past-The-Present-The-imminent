@@ -1,13 +1,5 @@
 ﻿using System.Collections.Generic;
 
-public enum StatNames
-{
-    MovementSpeed,
-    AttackSpeed,
-    MaxHealth,
-    Damage
-}
-
 public class CharacterStats
 {
     private Dictionary<StatNames, float> _statsMap;
