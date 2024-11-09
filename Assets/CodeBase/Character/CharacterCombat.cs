@@ -5,11 +5,11 @@ public class CharacterCombat : MonoBehaviour
 {
     [SerializeField] private Weapon _weapon;
 
-    public void TryShoot()
+    public void TryShoot(float damage, float attackSpeed)
     {
         if (_weapon.IsCooling)
             return;
 
-        _weapon.Shoot();
+        _weapon.Shoot(damage, attackSpeed);
     }
 }

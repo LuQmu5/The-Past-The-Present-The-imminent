@@ -4,8 +4,6 @@ using Zenject;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private float _shotsPerSecond = 1;
-    [SerializeField] private float _shotPower = 10;
     [SerializeField] private BulletTypes _bulletType;
     [SerializeField] private Transform _shootPoint;
 
@@ -19,22 +17,22 @@ public class Weapon : MonoBehaviour
         _bulletsFactory = bulletsFactory;
     }
 
-    public void Shoot()
+    public void Shoot(float damage, float attackSpeed)
     {
         Bullet bullet = _bulletsFactory.Get(_bulletType);
 
         bullet.transform.position = _shootPoint.position;
         bullet.gameObject.SetActive(true);
-        bullet.Launch(_shootPoint.forward, _shotPower);
+        bullet.Launch(_shootPoint.forward, damage);
 
-        StartCoroutine(Cooling());
+        StartCoroutine(Cooling(attackSpeed));
     }
 
-    private IEnumerator Cooling()
+    private IEnumerator Cooling(float attackSpeed)
     {
         IsCooling = true;
 
-        yield return new WaitForSeconds(1 / _shotsPerSecond);
+        yield return new WaitForSeconds(1 / attackSpeed);
 
         IsCooling = false;
     }

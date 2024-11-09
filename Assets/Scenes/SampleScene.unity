@@ -2624,8 +2624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ccb421873e9eb4c9780d3e65b1ab3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shotsPerSecond: 10
-  _shotPower: 10
   _bulletType: 1
   _shootPoint: {fileID: 826095023}
 --- !u!1 &2368427088957107603
@@ -4024,7 +4022,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 5454916110229703872}
-  _movementSpeed: 5
 --- !u!114 &5454916110229703874
 MonoBehaviour:
   m_ObjectHideFlags: 0

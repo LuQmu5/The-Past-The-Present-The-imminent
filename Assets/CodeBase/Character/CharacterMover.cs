@@ -5,14 +5,13 @@ using UnityEngine;
 public class CharacterMover : MonoBehaviour
 {
     [SerializeField] private CharacterController _controller;
-    [SerializeField] private float _movementSpeed;
 
     private void Update()
     {
         RotateToMouse();
     }
 
-    public void Move(Vector3 inputVector, bool isFiring)
+    public void Move(Vector3 inputVector, bool isFiring, float speed)
     {
         Vector3 movementVector = Vector3.zero;
         float speedReduceCoeff = 1.5f;
@@ -30,7 +29,7 @@ public class CharacterMover : MonoBehaviour
             }
         }
 
-        _controller.Move((_movementSpeed / speedReduceCoeff) * movementVector * Time.deltaTime);
+        _controller.Move((speed / speedReduceCoeff) * movementVector * Time.deltaTime);
     }
 
     private void RotateToMouse()

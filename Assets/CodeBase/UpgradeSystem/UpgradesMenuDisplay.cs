@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgradesMenuDisplay : MonoBehaviour
@@ -7,6 +8,8 @@ public class UpgradesMenuDisplay : MonoBehaviour
     [SerializeField] private Transform _container;
     [SerializeField] private UpgradeDisplay _upgradeDisplayPrefab;
     [SerializeField] private UpgradeData[] _data;
+
+    public event Action<UpgradeData> UpgradeChosen;
 
     public void Show()
     {
@@ -29,6 +32,6 @@ public class UpgradesMenuDisplay : MonoBehaviour
 
         _panel.gameObject.SetActive(false);
 
-        print("Chosen: " + data.Header);
+        UpgradeChosen?.Invoke(data);
     }
 }

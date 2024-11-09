@@ -11,8 +11,8 @@ public class Enemy : MonoBehaviour, IHealth
 
     private Transform _followTarget;
 
-    [field: SerializeField] public float MaxHealth { get; set; }
-    public float CurrentHealth { get; set; }
+    [field: SerializeField] public float MaxHealth { get; private set; }
+    public float CurrentHealth { get; private set; }
 
     public static event Action Died;
 
