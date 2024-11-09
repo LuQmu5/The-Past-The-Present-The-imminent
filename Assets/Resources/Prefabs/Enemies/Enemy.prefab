@@ -2382,7 +2382,7 @@ GameObject:
   - component: {fileID: 5993395909964181389}
   - component: {fileID: 2742045892026488183}
   m_Layer: 0
-  m_Name: ZombieEnemy
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2397,8 +2397,8 @@ Transform:
   m_GameObject: {fileID: 6817911045388380491}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 25}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7556343408205648714}
@@ -2452,7 +2452,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 2742045892026488183}
-  _followTarget: {fileID: 0}
   _movementSpeed: 4
   <MaxHealth>k__BackingField: 3
 --- !u!136 &5993395909964181389

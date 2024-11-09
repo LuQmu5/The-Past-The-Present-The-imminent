@@ -6,7 +6,6 @@ public class CharacterMover : MonoBehaviour
 {
     [SerializeField] private CharacterController _controller;
     [SerializeField] private float _movementSpeed;
-    [SerializeField] private float _offsetRotationY = 15;
 
     private void Update()
     {
